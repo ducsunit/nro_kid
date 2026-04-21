@@ -560,8 +560,8 @@ public class Service {
                 msg.writer().writeByte(20);
                 msg.writer().writeByte(20);
                 msg.writer().writeByte(1);
-                msg.writer().writeInt(clampToInt(player.nPoint.dame));// dam base
-                msg.writer().writeInt(clampToInt(player.nPoint.def));// def full
+                msg.writer().writeInt(player.nPoint.dame);// dam base
+                msg.writer().writeInt(player.nPoint.def);// def full
                 msg.writer().writeByte(clampToByte(player.nPoint.crit));// crit full
                 msg.writer().writeLong(player.nPoint.tiemNang);
                 msg.writer().writeShort(100);
@@ -605,7 +605,8 @@ public class Service {
                 }
             }
 
-            //---vang---luong--luongKhoa
+            // Money mapping with client:
+            // [1] xu (vang), [2] luongKhoa <- gem, [3] luong <- ruby
             long gold = pl.inventory.getGoldDisplay();
             msg.writer().writeLong(gold);
             msg.writer().writeInt(pl.inventory.gem);
@@ -1323,6 +1324,8 @@ public class Service {
         try {
             msg = new Message(6);
             long gold = pl.inventory.getGoldDisplay();
+            // Money mapping with client:
+            // [1] xu (vang), [2] luong <- gem, [3] luongKhoa <- ruby
             msg.writer().writeLong(gold);
             msg.writer().writeInt(pl.inventory.gem);
             msg.writer().writeInt(pl.inventory.ruby);
@@ -1421,9 +1424,7 @@ public class Service {
                     ms.writer().writeUTF("|5|" + text);
                     ms.writer().writeInt(-1);
                     ms.writer().writeShort(1460);
-                    if (pl.isVersionAbove(220)) {
-                        ms.writer().writeShort(-1);
-                    }
+                    ms.writer().writeShort(-1); // headICON (fixed width for all clients)
                     ms.writer().writeShort(1461);
                     ms.writer().writeShort(-1); //bag
                     ms.writer().writeShort(1462);

@@ -82,7 +82,8 @@ public class Session {
 
     public void update() {
         if (Util.canDoWithTime(lastTimeReadMessage, TIME_WAIT_READ_MESSAGE)) {
-//            Client.gI().kickSession(this);
+            System.out.println("[Session] Kick idle session: " + id + " - " + getName());
+            Client.gI().kickSession(this);
         }
     }
 

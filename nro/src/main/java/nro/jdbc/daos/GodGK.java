@@ -234,10 +234,10 @@ public class GodGK {
                     player.nPoint.tiemNang = Long.parseLong(dataArray.get(2).toString());
                     player.nPoint.stamina = Short.parseShort(dataArray.get(3).toString());
                     player.nPoint.maxStamina = Short.parseShort(dataArray.get(4).toString());
-                    player.nPoint.hpg = Long.parseLong(dataArray.get(5).toString());
-                    player.nPoint.mpg = Long.parseLong(dataArray.get(6).toString());
-                    player.nPoint.dameg = Long.parseLong(dataArray.get(7).toString());
-                    player.nPoint.defg = Long.parseLong(dataArray.get(8).toString());
+                    player.nPoint.hpg = Integer.parseInt(dataArray.get(5).toString());
+                    player.nPoint.mpg = Integer.parseInt(dataArray.get(6).toString());
+                    player.nPoint.dameg = Integer.parseInt(dataArray.get(7).toString());
+                    player.nPoint.defg = Integer.parseInt(dataArray.get(8).toString());
                     player.nPoint.critg = Byte.parseByte(dataArray.get(9).toString());
                     dataArray.get(10); //** Năng động
                     plHp = Long.parseLong(dataArray.get(11).toString());
@@ -636,7 +636,7 @@ public class GodGK {
                     player.isnhanthuong1 = Integer.parseInt(String.valueOf(dataArray.get(2))) == 1 ? true : false;
                     player.nPoint.hpMax = Long.parseLong(dataArray.get(3).toString());
                     player.nPoint.mpMax = Long.parseLong(dataArray.get(4).toString());
-                    player.nPoint.dame = Long.parseLong(dataArray.get(5).toString());
+                    player.nPoint.dame = Integer.parseInt(dataArray.get(5).toString());
                     
                     if (player.rankSieuHang == 0){
                         player.rankSieuHang = (int) player.id;
@@ -805,10 +805,10 @@ public class GodGK {
                         dataObject = (JSONObject) jv.parse(rs.getString("pet_point"));
                         pet.nPoint.stamina = Short.parseShort(String.valueOf(dataObject.get("stamina")));
                         pet.nPoint.maxStamina = Short.parseShort(String.valueOf(dataObject.get("max_stamina")));
-                        pet.nPoint.hpg = Long.parseLong(String.valueOf(dataObject.get("hpg")));
-                        pet.nPoint.mpg = Long.parseLong(String.valueOf(dataObject.get("mpg")));
-                        pet.nPoint.dameg = Long.parseLong(String.valueOf(dataObject.get("damg")));
-                        pet.nPoint.defg = Long.parseLong(String.valueOf(dataObject.get("defg")));
+                        pet.nPoint.hpg = Integer.parseInt(String.valueOf(dataObject.get("hpg")));
+                        pet.nPoint.mpg = Integer.parseInt(String.valueOf(dataObject.get("mpg")));
+                        pet.nPoint.dameg = Integer.parseInt(String.valueOf(dataObject.get("damg")));
+                        pet.nPoint.defg = Integer.parseInt(String.valueOf(dataObject.get("defg")));
                         pet.nPoint.critg = Integer.parseInt(String.valueOf(dataObject.get("critg")));
                         pet.nPoint.power = Long.parseLong(String.valueOf(dataObject.get("power")));
                         pet.nPoint.tiemNang = Long.parseLong(String.valueOf(dataObject.get("tiem_nang")));
@@ -986,10 +986,10 @@ public class GodGK {
                     player.nPoint.tiemNang = Long.parseLong(dataArray.get(2).toString());
                     player.nPoint.stamina = Short.parseShort(dataArray.get(3).toString());
                     player.nPoint.maxStamina = Short.parseShort(dataArray.get(4).toString());
-                    player.nPoint.hpg = Long.parseLong(dataArray.get(5).toString());
-                    player.nPoint.mpg = Long.parseLong(dataArray.get(6).toString());
-                    player.nPoint.dameg = Long.parseLong(dataArray.get(7).toString());
-                    player.nPoint.defg = Long.parseLong(dataArray.get(8).toString());
+                    player.nPoint.hpg = Integer.parseInt(dataArray.get(5).toString());
+                    player.nPoint.mpg = Integer.parseInt(dataArray.get(6).toString());
+                    player.nPoint.dameg = Integer.parseInt(dataArray.get(7).toString());
+                    player.nPoint.defg = Integer.parseInt(dataArray.get(8).toString());
                     player.nPoint.critg = Byte.parseByte(dataArray.get(9).toString());
                     dataArray.get(10); //** Năng động
                     plHp = Long.parseLong(dataArray.get(11).toString());
@@ -1396,7 +1396,7 @@ public class GodGK {
                     player.isnhanthuong1 = Integer.parseInt(String.valueOf(dataArray.get(2))) == 1 ? true : false;
                     player.nPoint.hpMax = Long.parseLong(dataArray.get(3).toString());
                     player.nPoint.mpMax = Long.parseLong(dataArray.get(4).toString());
-                    player.nPoint.dame = Long.parseLong(dataArray.get(5).toString());
+                    player.nPoint.dame = Integer.parseInt(dataArray.get(5).toString());
                     
                     if (player.rankSieuHang == 0){
                         player.rankSieuHang = (int) player.id;
@@ -1556,10 +1556,10 @@ public class GodGK {
                         dataObject = (JSONObject) jv.parse(rs.getString("pet_point"));
                         pet.nPoint.stamina = Short.parseShort(String.valueOf(dataObject.get("stamina")));
                         pet.nPoint.maxStamina = Short.parseShort(String.valueOf(dataObject.get("max_stamina")));
-                        pet.nPoint.hpg = Long.parseLong(String.valueOf(dataObject.get("hpg")));
-                        pet.nPoint.mpg = Long.parseLong(String.valueOf(dataObject.get("mpg")));
-                        pet.nPoint.dameg = Long.parseLong(String.valueOf(dataObject.get("damg")));
-                        pet.nPoint.defg = Long.parseLong(String.valueOf(dataObject.get("defg")));
+                        pet.nPoint.hpg = Integer.parseInt(String.valueOf(dataObject.get("hpg")));
+                        pet.nPoint.mpg = Integer.parseInt(String.valueOf(dataObject.get("mpg")));
+                        pet.nPoint.dameg = Integer.parseInt(String.valueOf(dataObject.get("damg")));
+                        pet.nPoint.defg = Integer.parseInt(String.valueOf(dataObject.get("defg")));
                         pet.nPoint.critg = Integer.parseInt(String.valueOf(dataObject.get("critg")));
                         pet.nPoint.power = Long.parseLong(String.valueOf(dataObject.get("power")));
                         pet.nPoint.tiemNang = Long.parseLong(String.valueOf(dataObject.get("tiem_nang")));

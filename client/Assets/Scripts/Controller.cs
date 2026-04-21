@@ -3337,6 +3337,8 @@ public class Controller : IMessageHandler
 			}
 			case 6:
 				GameCanvas.debug("SA70", 2);
+				// Mapping from server sendMoney():
+				// [1] xu, [2] gem -> luong, [3] ruby -> luongKhoa
 				Char.myCharz().xu = msg.reader().readLong();
 				Char.myCharz().luong = msg.reader().readInt();
 				Char.myCharz().luongKhoa = msg.reader().readInt();

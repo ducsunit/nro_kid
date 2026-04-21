@@ -697,7 +697,7 @@ public class Controller {
                     case 17:
                         byte typee = _msg.reader().readByte();
                         short pointt = _msg.reader().readShort();
-                        if (player != null && player.nPoint != null) {
+                        if (player != null && player.pet != null && player.pet.nPoint != null) {
                             player.pet.nPoint.increasePoint(typee, pointt);
                         }
                         break;

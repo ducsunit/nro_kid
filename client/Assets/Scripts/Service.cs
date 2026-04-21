@@ -862,6 +862,7 @@ public class Service
 			Message message = messageNotLogin(1);
 			message.writer().writeUTF(username);
 			message.writer().writeUTF(pass);
+			message.writer().writeUTF(version);
 			if (usernameAo != null && !usernameAo.Equals(string.Empty))
 			{
 				message.writer().writeUTF(usernameAo);

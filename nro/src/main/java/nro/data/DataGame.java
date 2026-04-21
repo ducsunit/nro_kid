@@ -293,7 +293,8 @@ public class DataGame {
             msg = new Message(-29);
             msg.writer().writeByte(2);
             msg.writer().writeUTF(LINK_IP_PORT + ",0,0");
-            msg.writer().writeByte(1);
+            msg.writer().writeByte(1); // CanNapTien
+            msg.writer().writeByte(0); // AdminLink
             session.sendMessage(msg);
             msg.cleanup();
         } catch (Exception e) {

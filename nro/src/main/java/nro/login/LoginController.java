@@ -138,7 +138,7 @@ public class LoginController {
                         session.isAdmin = isAdmin;
                         session.actived = actived;
                         session.goldBar = goldBar;
-                        session.lastTimeLogout = lastTimeLogin;
+                        session.lastTimeLogout = lastTimeLogout;
                         session.dataReward = rewards;
                         session.ruby = ruby;
                         session.diemTichNap = diemTichNap;

@@ -50,14 +50,14 @@ public class NPoint {
     public byte limitPower;
     public long power;
     public long tiemNang;
-    public long mpg, hpg;
-    public long dameg;
+    public int mpg, hpg;
+    public int dameg;
 
     public long hp, hpMax;
     public long mp, mpMax;
-    public long dame;
-    public long def;
-    public long defg;
+    public int dame;
+    public int def;
+    public int defg;
     public int crit, critg;
     public byte speed = 5;
 
@@ -98,7 +98,7 @@ public class NPoint {
     /**
      * Lượng hp, mp hồi mỗi 30s, mp hồi cho người khác
      */
-    public long hpHoi, mpHoi, mpHoiCute;
+    public int hpHoi, mpHoi, mpHoiCute;
 
     /**
      * Tỉ lệ hp, mp hồi cộng thêm
@@ -655,7 +655,7 @@ public class NPoint {
     }
 
     private void setHpHoi() {
-        this.hpHoi = calPercent(this.hpMax, 1);
+        this.hpHoi = (int) calPercent(this.hpMax, 1);
         this.hpHoi += this.hpHoiAdd;
         this.hpHoi += calPercent(this.hpMax, this.tlHpHoi);
         this.hpHoi += calPercent(this.hpMax, this.tlHpHoiBanThanVaDongDoi);
@@ -665,7 +665,7 @@ public class NPoint {
     }
 
     private void setMpHoi() {
-        this.mpHoi = calPercent(this.mpMax, 1);
+        this.mpHoi = (int) calPercent(this.mpMax, 1);
         this.mpHoi += this.mpHoiAdd;
         this.mpHoi += calPercent(this.mpMax, this.tlMpHoi);
         this.mpHoi += calPercent(this.mpMax, this.tlMpHoiBanThanVaDongDoi);
@@ -1930,123 +1930,123 @@ public class NPoint {
     private void setDame() {
         Attribute attribute;
         this.dame = this.dameg;
-        this.dame += (long) this.dameAdd;
+        this.dame += this.dameAdd;
         ArrayList<Integer> tlDameCopy = new ArrayList<Integer>(this.tlDame);
         for (Integer n : tlDameCopy) {
-            this.dame += this.calPercent(this.dame, n.intValue());
+            this.dame += (int) this.calPercent(this.dame, n.intValue());
         }
         ArrayList<Integer> tlSDDepCopy = new ArrayList<Integer>(this.tlSDDep);
         for (Integer tl : tlSDDepCopy) {
-            this.dame += this.calPercent(this.dame, tl.intValue());
+            this.dame += (int) this.calPercent(this.dame, tl.intValue());
         }
         if (this.player.setClothes.nguyetan == 5) {
-            this.dame += this.calPercent(this.dame, 10L);
+            this.dame += (int) this.calPercent(this.dame, 10L);
         }
         if (this.player.isPet && (((Pet) this.player).master.fusion.typeFusion == 6 || ((Pet) this.player).master.fusion.typeFusion == ConstPlayer.HOP_THE_PORATA2 || ((Pet) this.player).master.fusion.typeFusion == ConstPlayer.HOP_THE_PORATA3 || ((Pet) this.player).master.fusion.typeFusion == ConstPlayer.HOP_THE_PORATA4 || ((Pet) this.player).master.fusion.typeFusion == ConstPlayer.HOP_THE_PORATA5)) {
             if (((Pet) this.player).typePet == 1) {
-                this.dame += this.calPercent(this.dame, 30L);
+                this.dame += (int) this.calPercent(this.dame, 30L);
             } else if (((Pet) this.player).typePet == 2) {
-                this.dame += this.calPercent(this.dame, 50L);
+                this.dame += (int) this.calPercent(this.dame, 50L);
             } else if (((Pet) this.player).typePet == 3) {
-                this.dame += this.calPercent(this.dame, 100L);
+                this.dame += (int) this.calPercent(this.dame, 100L);
             }
         }
         if (this.player.isPet && this.player.PorataVIP && (((Pet) this.player).master.fusion.typeFusion == 6 || ((Pet) this.player).master.fusion.typeFusion == ConstPlayer.HOP_THE_PORATA2 || ((Pet) this.player).master.fusion.typeFusion == ConstPlayer.HOP_THE_PORATA3 || ((Pet) this.player).master.fusion.typeFusion == ConstPlayer.HOP_THE_PORATA4 || ((Pet) this.player).master.fusion.typeFusion == ConstPlayer.HOP_THE_PORATA5)) {
-            this.dame += this.calPercent(this.dame, 10L);
+            this.dame += (int) this.calPercent(this.dame, 10L);
         }
         if (!this.player.isPet && this.player.itemTime.isEatMeal || this.player.isPet && ((Pet) this.player).master.itemTime.isEatMeal) {
-            this.dame += this.calPercent(this.dame, 10L);
+            this.dame += (int) this.calPercent(this.dame, 10L);
         }
         if (this.player.fusion.typeFusion != 0) {
             this.dame += this.player.pet.nPoint.dame;
         }
         if (this.player.itemTime != null && this.player.itemTime.isUseCuongNo) {
-            this.dame *= 2L;
+            this.dame *= 2;
         }
         if (this.player.itemTime != null && this.player.itemTime.isUseCuongNo2) {
-            this.dame += this.calPercent(this.dame, 120L);
+            this.dame += (int) this.calPercent(this.dame, 120L);
         }
         if (this.player.zone != null && MapService.gI().isMapMabuWar14H(this.player.zone.map.mapId)) {
-            this.dame += 10000L;
+            this.dame += 10000;
         }
-        this.dame -= this.calPercent(this.dame, this.tlSubSD);
+        this.dame -= (int) this.calPercent(this.dame, this.tlSubSD);
         if (this.player.zone != null && MapService.gI().isMapCold(this.player.zone.map) && !this.isKhongLanh) {
-            this.dame /= 2L;
+            this.dame /= 2;
         }
         if (this.player.rewardBlackBall.timeOutOfDateReward[0] > System.currentTimeMillis()) {
-            this.dame += this.calPercent(this.dame, 24L);
+            this.dame += (int) this.calPercent(this.dame, 24L);
         }
         if (!this.player.isBoss && (attribute = ServerManager.gI().getAttributeManager().find(5)) != null && !attribute.isExpired()) {
-            this.dame += this.calPercent(this.dame, attribute.getValue());
+            this.dame += (int) this.calPercent(this.dame, attribute.getValue());
         }
         if (this.player.itemTime != null && this.player.itemTime.isUseBanhChung) {
-            this.dame += this.calPercent(this.dame, 20L);
+            this.dame += (int) this.calPercent(this.dame, 20L);
         }
         if (this.player.getBuff() == Buff.BUFF_ATK) {
-            this.dame += this.calPercent(this.dame, 20L);
+            this.dame += (int) this.calPercent(this.dame, 20L);
         }
         if (this.player.effectSkin.isNezuko) {
-            this.dame += this.calPercent(this.dame, 15L);
+            this.dame += (int) this.calPercent(this.dame, 15L);
         }
         if (this.player.effectSkill.isMonkey && (!this.player.isPet || this.player.isPet && ((Pet) this.player).status != 4)) {
             int n = SkillUtil.getPercentDameMonkey(this.player.effectSkill.levelMonkey);
-            this.dame += this.calPercent(this.dame, n);
+            this.dame += (int) this.calPercent(this.dame, n);
         }
         if (!this.player.isPet && this.player.itemTime.isEatMeal || this.player.isPet && ((Pet) this.player).master.itemTime.isEatMeal) {
-            this.dame += this.calPercent(this.dame, 10L);
+            this.dame += (int) this.calPercent(this.dame, 10L);
         }
         if (!this.player.isPet && this.player.itemTimesieucap.isDuoikhi || this.player.isPet && ((Pet) this.player).master.itemTimesieucap.isDuoikhi) {
-            this.dame += this.calPercent(this.dame, 5L);
+            this.dame += (int) this.calPercent(this.dame, 5L);
         }
         if (this.player.itemTimesieucap != null && this.player.itemTimesieucap.isDaNgucTu) {
-            this.dame += this.calPercent(this.dame, 10L);
+            this.dame += (int) this.calPercent(this.dame, 10L);
         }
         if (this.player.itemTimesieucap != null && this.player.itemTimesieucap.isBienhinh) {
-            this.dame += this.calPercent(this.dame, 20L);
+            this.dame += (int) this.calPercent(this.dame, 20L);
         }
         if (this.player.itemTimesieucap != null && this.player.itemTimesieucap.isUseXiMuoi) {
-            this.dame += this.calPercent(this.dame, 5L);
+            this.dame += (int) this.calPercent(this.dame, 5L);
         }
         if (this.player.itemTimesieucap != null && this.player.itemTimesieucap.isUseTrungThu && this.player.itemTimesieucap.iconBanh == 4042) {
-            this.dame += this.calPercent(this.dame, 10L);
+            this.dame += (int) this.calPercent(this.dame, 10L);
         }
         if (this.player.itemTimesieucap != null && this.player.itemTimesieucap.isUseTrungThu && this.player.itemTimesieucap.iconBanh == 4043) {
-            this.dame += this.calPercent(this.dame, 20L);
+            this.dame += (int) this.calPercent(this.dame, 20L);
         }
         if (this.player.itemTimesieucap != null && this.player.itemTimesieucap.isUseTrungThu && this.player.itemTimesieucap.iconBanh == 4125) {
-            this.dame += this.calPercent(this.dame, 30L);
+            this.dame += (int) this.calPercent(this.dame, 30L);
         }
         if (this.player.itemTimesieucap != null && this.player.itemTimesieucap.isUseTrungThu && this.player.itemTimesieucap.iconBanh == 4126) {
-            this.dame += this.calPercent(this.dame, 40L);
+            this.dame += (int) this.calPercent(this.dame, 40L);
         }
         if (this.player.chuyensinh > 0) {
             if (this.player.chuyensinh <= 10) {
-                this.dame += (long) (1750 * this.player.chuyensinh);
+                this.dame += 1750 * this.player.chuyensinh;
             }
             if (this.player.chuyensinh <= 20 && this.player.chuyensinh > 10) {
-                this.dame += (long) (3350 * this.player.chuyensinh);
+                this.dame += 3350 * this.player.chuyensinh;
             }
             if (this.player.chuyensinh > 20 && this.player.chuyensinh <= 30) {
-                this.dame += (long) (4950 * this.player.chuyensinh);
+                this.dame += 4950 * this.player.chuyensinh;
             }
             if (this.player.chuyensinh > 30) {
-                this.dame += (long) (6000 * this.player.chuyensinh);
+                this.dame += 6000 * this.player.chuyensinh;
             }
         }
         if (this.player.isPl() && this.player.isTitleUse3 && this.player.lastTimeTitle3 > 0L) {
-            this.dame += this.calPercent(this.dame, 20L);
+            this.dame += (int) this.calPercent(this.dame, 20L);
         }
         if (this.player.isPl() && this.player.isTitleUse2 && this.player.lastTimeTitle2 > 0L) {
-            this.dame += this.calPercent(this.dame, 20L);
+            this.dame += (int) this.calPercent(this.dame, 20L);
         }
         if (this.player.isPl() && this.player.isTitleUse1 && this.player.lastTimeTitle1 > 0L) {
-            this.dame += this.calPercent(this.dame, 20L);
+            this.dame += (int) this.calPercent(this.dame, 20L);
         }
         if (this.player.itemTimesieucap != null && this.player.itemTimesieucap.isRongBang) {
-            this.dame += this.calPercent(this.dame, 15L);
+            this.dame += (int) this.calPercent(this.dame, 15L);
         }
         if (this.player.itemTimesieucap != null && this.player.itemTimesieucap.isRongSieuCap) {
-            this.dame += this.calPercent(this.dame, 50L);
+            this.dame += (int) this.calPercent(this.dame, 50L);
         }
     }
 
@@ -2062,13 +2062,13 @@ public class NPoint {
         }
         //ngọc rồng đen 5 sao
         if (this.player.rewardBlackBall.timeOutOfDateReward[4] > System.currentTimeMillis()) {
-            this.def += calPercent(this.def, RewardBlackBall.R5S);
+            this.def += (int) calPercent(this.def, RewardBlackBall.R5S);
         }
         if (this.player.effectSkin.isInosuke) {
-            this.def += calPercent(this.def, 50);
+            this.def += (int) calPercent(this.def, 50);
         }
         if (this.player.effectSkin.isInoHashi) {
-            this.def += calPercent(this.def, 60);
+            this.def += (int) calPercent(this.def, 60);
         }
     }
 
@@ -2224,7 +2224,7 @@ public class NPoint {
 
     public long getDameAttack(boolean isAttackMob) {
         setIsCrit();
-        long dameAttack = this.dame;
+        long dameAttack = (long) this.dame;
         intrinsic = this.player.playerIntrinsic.intrinsic;
         percentDameIntrinsic = 0;
         long percentDameSkill = 0;
@@ -2529,7 +2529,7 @@ public class NPoint {
     }
 
     public long subDameInjureWithDeff(long dame) {
-        long def = this.def;
+        long def = (long) this.def;
         dame -= def;
         if (this.player.itemTime.isUseGiapXen) {
             dame /= 2;
@@ -2718,14 +2718,14 @@ public class NPoint {
     }
 
     public void setAttributeOverLimit() {
-        this.hpg = Math.max(1, Math.min(INT_MAX_VALUE, this.hpg));
-        this.mpg = Math.max(1, Math.min(INT_MAX_VALUE, this.mpg));
-        this.dameg = Math.max(1, Math.min(INT_MAX_VALUE, this.dameg));
-        this.defg = Math.max(0, Math.min(INT_MAX_VALUE, this.defg));
+        this.hpg = Math.max(1, this.hpg);
+        this.mpg = Math.max(1, this.mpg);
+        this.dameg = Math.max(1, this.dameg);
+        this.defg = Math.max(0, this.defg);
         this.hpMax = Math.max(1, Math.min(INT_MAX_VALUE, this.hpMax));
         this.mpMax = Math.max(1, Math.min(INT_MAX_VALUE, this.mpMax));
-        this.dame = Math.max(1, Math.min(INT_MAX_VALUE, this.dame));
-        this.def = Math.max(0, Math.min(INT_MAX_VALUE, this.def));
+        this.dame = Math.max(1, this.dame);
+        this.def = Math.max(0, this.def);
         this.power = Math.max(0, Math.min(INT_MAX_VALUE, this.power));
         this.tiemNang = Math.max(0, Math.min(INT_MAX_VALUE, this.tiemNang));
         this.crit = Math.max(0, Math.min(110, this.crit));

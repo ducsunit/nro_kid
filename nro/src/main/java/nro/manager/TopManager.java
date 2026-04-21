@@ -171,9 +171,9 @@ public class TopManager {
                     pet.nPoint.stamina = Short.parseShort(String.valueOf(dataObject.get("stamina")));
                     pet.nPoint.maxStamina = Short.parseShort(String.valueOf(dataObject.get("max_stamina")));
                     pet.nPoint.hpg = Integer.parseInt(String.valueOf(dataObject.get("hpg")));
-                    pet.nPoint.mpg = Long.parseLong(String.valueOf(dataObject.get("mpg")));
-                    pet.nPoint.dameg = Long.parseLong(String.valueOf(dataObject.get("damg")));
-                    pet.nPoint.defg = Long.parseLong(String.valueOf(dataObject.get("defg")));
+                    pet.nPoint.mpg = Integer.parseInt(String.valueOf(dataObject.get("mpg")));
+                    pet.nPoint.dameg = Integer.parseInt(String.valueOf(dataObject.get("damg")));
+                    pet.nPoint.defg = Integer.parseInt(String.valueOf(dataObject.get("defg")));
                     pet.nPoint.critg = Integer.parseInt(String.valueOf(dataObject.get("critg")));
                     pet.nPoint.power = Long.parseLong(String.valueOf(dataObject.get("power")));
                     pet.nPoint.tiemNang = Long.parseLong(String.valueOf(dataObject.get("tiem_nang")));
@@ -445,7 +445,7 @@ public class TopManager {
                 player.isnhanthuong1 = Integer.parseInt(String.valueOf(dataArray.get(0))) == 1 ? true : false;
                 player.nPoint.hpMax = Long.parseLong(dataArray.get(3).toString());
                 player.nPoint.mpMax = Long.parseLong(dataArray.get(4).toString());
-                player.nPoint.dame = Long.parseLong(dataArray.get(5).toString());
+                player.nPoint.dame = Integer.parseInt(dataArray.get(5).toString());
                 dataArray.clear();
 
                 dataArray = (JSONArray) jv.parse(rs.getString("items_body"));
